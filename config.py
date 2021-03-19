@@ -14,7 +14,7 @@ def get_data_path():
 def get_results_path():
     project_path = get_project_path()
     parent_dir = project_path.parent
-    return parent_dir / 'Results'
+    return parent_dir / 'results'
 
 # get string path
 def string_path(path_arg):
