@@ -13,7 +13,7 @@ so the final structure is
 LOCAL_DIR
 └───data  (contains the ground truth data sets)
 └───code
-└───results (synthetically degraded segmentation masks stored will be stored here)
+└───results (synthetically degraded segmentation masks will be stored here)
 ```
 
 ### 2) create environment
