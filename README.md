@@ -28,7 +28,7 @@ LOCAL_DIR
 ## Reproduce synthetic data sets
 ### 1) download data sets
 - go to http://celltrackingchallenge.net
-and download Fluo-N2DH-SIM+ and FLuo-N3DH-SIM+, unpack and save in data directory:
+and download Fluo-N2DH-SIM+ and Fluo-N3DH-SIM+, unpack and save in data directory:
 ```
 LOCAL_DIR
 └───data  (contains the ground truth data sets)
