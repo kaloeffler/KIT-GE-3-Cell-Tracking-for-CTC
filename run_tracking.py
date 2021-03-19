@@ -44,12 +44,15 @@ def run_graph2_0(img_path, segm_path, res_path, delta_t=3, default_roi_size=2):
 if __name__ == '__main__':
     from argparse import ArgumentParser
 
-    PARSER = ArgumentParser(description='Tracking KIT-Sch-GE')
-    PARSER.add_argument('--image_path', type=str)
+    PARSER = ArgumentParser(description='Tracking KIT-Sch-GE.')
+    PARSER.add_argument('--image_path', type=str, help='path to the folder containing the raw images.')
+    PARSER.add_argument('--segmentation_path', type=str, help='path to the folder containing the segmentation images.')
+    PARSER.add_argument('--results_path', type=str, help='path where to store the tracking results. '
+                                                         'If the results path is the same as the segmentation'
+                                                         '_path the segmentation images will be overwritten.')
     PARSER.add_argument('--delta_t', type=int, default=3)
     PARSER.add_argument('--default_roi_size', type=int, default=2)
 
     ARGS = PARSER.parse_args()
 
-    SEGM_PATH = Path(ARGS.image_path).as_posix() + '_RES'
-    run_graph2_0(ARGS.image_path, SEGM_PATH, SEGM_PATH, ARGS.delta_t, ARGS.default_roi_size)
+    run_graph2_0(ARGS.image_path, ARGS.segmentation_path, ARGS.results_path, ARGS.delta_t, ARGS.default_roi_size)
