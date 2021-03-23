@@ -17,7 +17,7 @@ LOCAL_DIR
 ```
 
 ### 2) create environment
-- install packages from requirements
+- conda env create -f requirements.yml
 - install gurobi 9.1.1 (see help_gurobi.txt)
 
 ## run tracking
@@ -28,7 +28,7 @@ LOCAL_DIR
 ## Reproduce synthetic data sets
 ### 1) download data sets
 - go to http://celltrackingchallenge.net
-and download Fluo-N2DH-SIM+ and Fluo-N3DH-SIM+, unpack and save in data directory:
+and download the training data sets Fluo-N2DH-SIM+ and Fluo-N3DH-SIM+, unpack and save in data directory:
 ```
 LOCAL_DIR
 └───data  (contains the ground truth data sets)
