@@ -9,7 +9,7 @@ from tracker.extract_data import get_indices_pandas
 from tracker.tracking import TrackingConfig, MultiCellTracker
 
 
-def run_graph2_0(img_path, segm_path, res_path, delta_t=3, default_roi_size=2):
+def run_tracker(img_path, segm_path, res_path, delta_t=3, default_roi_size=2):
     img_path = Path(img_path)
     segm_path = Path(segm_path)
     res_path = Path(res_path)
@@ -55,4 +55,4 @@ if __name__ == '__main__':
 
     ARGS = PARSER.parse_args()
 
-    run_graph2_0(ARGS.image_path, ARGS.segmentation_path, ARGS.results_path, ARGS.delta_t, ARGS.default_roi_size)
+    run_tracker(ARGS.image_path, ARGS.segmentation_path, ARGS.results_path, ARGS.delta_t, ARGS.default_roi_size)
