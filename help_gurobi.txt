@@ -14,7 +14,7 @@ mv /../Downloads/gurobi9.1.1_linux64.tar.gz /LOCAL_DIR
 tar xvfz gurobi9.1.1_linux64.tar.gz
 
 5) add gurobi to path
-export=$PATH:/LOCAL_DIR/gurobi911/linux/bin
+export PATH=$PATH:/LOCAL_DIR/gurobi911/linux/bin
 
 6) get gurobi license key https://www.gurobi.com/downloads/end-user-license-agreement-academic/
 
