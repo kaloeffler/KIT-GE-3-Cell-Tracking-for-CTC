@@ -24,7 +24,7 @@ def compute_split(merged_object_ind, object_centers, plot=False):
     Returns: array of seed points
 
     """
-    assert len(object_centers) < len(merged_object_ind[0])
+    assert len(object_centers) <= len(merged_object_ind[0])
     seed_points = calc_seed_points(merged_object_ind, len(object_centers), plot)
     matching = find_best_matches(list(zip(*seed_points)), object_centers)
     object_indices, point_indices = list(zip(*matching))
