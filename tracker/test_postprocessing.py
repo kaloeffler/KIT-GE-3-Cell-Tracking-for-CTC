@@ -1,7 +1,7 @@
 """Some minimal examples to eval the untangling step of the post-processing."""
 from unittest.mock import Mock
 from tracker.postprocessing import setup_constraints, solve_untangling_problem
-
+import numpy as np
 
 def test_merge_case_1():
     #   / 2 \
@@ -443,8 +443,8 @@ def test_merge_case_8():
 
     non_zero_variables = {k: v for k, v in result.items() if v > 0}
 
-    solution = {'m_3_4': 1}
-    assert non_zero_variables == solution, f'optimization result {non_zero_variables} and solution {solution} missmatch'
+    solutions = [{"s_2": 1}, {'m_3_4': 1}, {'m_4_5': 1}]
+    assert np.any([non_zero_variables == np.array(solutions)]), f'optimization result {non_zero_variables} and solution {solutions} missmatch'
 
 
 def test_merge_case_9():
@@ -1037,7 +1037,7 @@ def test_split_merge_case():
 
     non_zero_variables = {k: v for k, v in result.items() if v > 0}
 
-    solution = {'s_3': 1, 'm_6_8': 1, 'e_4_9': 1}
+    solution = {'s_3': 1, 'm_6_8': 1, 's_9': 1}
     assert non_zero_variables == solution, f'optimization result {non_zero_variables} and solution {solution} missmatch'
 
 
