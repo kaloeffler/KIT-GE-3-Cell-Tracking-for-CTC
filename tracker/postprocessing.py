@@ -103,6 +103,7 @@ def untangle_tracks(all_tracks):
     selected_operations = {var_name: value
                            for var_name, value in result.items()
                            if value > 0}
+    print(selected_operations)
     # variable x_t1_t2..._tn : x: operation to apply on several tracks
     # or x_t1 : operation to apply on a single track
     tracks_to_remove = []
@@ -699,6 +700,7 @@ def solve_untangling_problem(costs, A_eq, b_eq, A_ieq, b_ieq):
     var_name_to_index = {v: k for k, v in index_model_vars.items()}
 
     model = gp.Model('detangle')
+
     m_costs = [costs[index_model_vars[i]] for i in range(len(index_model_vars))]
     v_type = []
     for k in sorted(index_model_vars.keys()):
@@ -707,7 +709,22 @@ def solve_untangling_problem(costs, A_eq, b_eq, A_ieq, b_ieq):
         else:
             v_type.append(GRB.BINARY)
 
-    model_vars = model.addVars(range(len(index_model_vars)), vtype=v_type, obj=m_costs)
+    # add sum of all variables to penalize too many selected graph operations - prefer a single operation
+    # with higher costs over several graph operations
+    # for binary variables: just add +1 to the costs (edge and merge costs)
+    # for split variables: add dummy variable - if split variable not set dummy variable will be 0 to avoid additional cost
+    # if split variable is set dummy variable is 1 to full fill inequality constraint (LARGE_NUM * dummy_i - s_i >=0)
+    m_costs = np.array(m_costs)
+    m_costs[np.array(v_type) == GRB.BINARY] += 1
+    m_costs = list(m_costs)
+    model_vars = model.addVars(range(len(index_model_vars)), vtype=v_type, obj=m_costs, name="untangling_operations")
+    model.update()
+    split_variables = [key for key, var_name in index_model_vars.items() if var_name.startswith("s")]
+    set_split_variables = model.addVars(range(len(model_vars), len(model_vars)+len(split_variables)),
+                                        name="set_variables", vtype=GRB.BINARY, obj=[1] * len(split_variables))
+    model.update()
+    model.addConstrs(((100000 * set_split_variables[idx_is_set_var] - model_vars[idx_split_var]) >= 0
+                      for idx_split_var, idx_is_set_var in zip(split_variables, sorted(set_split_variables.keys()))))
     model.modelSense = GRB.MINIMIZE
 
     model.addConstrs((gp.LinExpr([(factor, model_vars[var_name_to_index[var_name]])
@@ -733,8 +750,8 @@ def solve_untangling_problem(costs, A_eq, b_eq, A_ieq, b_ieq):
     else:
         print('Optimization ended with status %d' % model.status)
         sys.exit(0)
-    optim_result = {index_model_vars[f_var.index]: int(np.rint(f_var.X))
-                    for f_var in model.getVars()}
+    optim_result = {index_model_vars[key]: int(np.rint(variable.X))
+                    for key, variable in model_vars.items()}
     return optim_result
 
 
