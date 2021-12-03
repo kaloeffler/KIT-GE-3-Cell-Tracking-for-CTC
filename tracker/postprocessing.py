@@ -300,10 +300,6 @@ def split_tracks(all_tracks, split_track_id, n_splits, all_split_track_ids):
                     track.successors.remove(s)
             successors = []
 
-    for track_id in new_track_ids:
-        all_tracks[track_id] = CellTrack(track_id, [])
-        all_tracks[track_id].successors = {}
-
     # if segmentation mask (n pixels) smaller than number of objects to split into don't split
     segm_masks = track.masks
     is_too_small_mask = [len(mask[0]) < n_splits for mask in segm_masks.values()]
@@ -316,6 +312,10 @@ def split_tracks(all_tracks, split_track_id, n_splits, all_split_track_ids):
             if split_track_id in all_tracks[s].pred_track_id:
                 all_tracks[s].pred_track_id.remove(split_track_id)
         return all_tracks
+
+    for track_id in new_track_ids:
+        all_tracks[track_id] = CellTrack(track_id, [])
+        all_tracks[track_id].successors = {}
 
     if len(track.successors) == n_splits:
         seed_positions = [all_tracks[s].get_first_position() for s in track.successors]
