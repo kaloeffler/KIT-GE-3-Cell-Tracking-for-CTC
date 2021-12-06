@@ -74,7 +74,8 @@ class MultiCellTracker:
         segmentation, mask_indices = self.config.get_segmentation_masks(time)
 
         # initialize tracklets
-        for m_id, mask in mask_indices.items():
+        for m_id in mask_indices.index.values:
+            mask = mask_indices[m_id]
             m = np.array(mask)
             box_shape = np.max(m, axis=-1) - np.min(m, axis=-1) + 1
             box_shape = [max(a, b) for a, b in zip(box_shape, self.config.roi_box_size)]
