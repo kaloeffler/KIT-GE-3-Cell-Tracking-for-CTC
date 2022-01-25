@@ -47,7 +47,7 @@ def add_dummy_masks(all_tracks, img_shape):
                            for t_s, t_e, t_span in zip(t_start, t_end, time_span)
                            for tt in range(1, t_span)}
             # mask pixels must lay in img 0...img_shape, neg indices lead to placement on other side of array
-            dummy_masks = {k: tuple(mask[..., np.all((mask > 0) & (mask < np.repeat(img_shape_squeezed,
+            dummy_masks = {k: tuple(mask[..., np.all((mask >= 0) & (mask < np.repeat(img_shape_squeezed,
                                                                                     mask.shape[-1],
                                                                                     axis=-1)),
                                                      axis=0)])
