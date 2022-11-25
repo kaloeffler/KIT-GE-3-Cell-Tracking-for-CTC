@@ -1,3 +1,12 @@
+# A graph-based cell tracking algorithm with few manually tunable parameters and automated segmentation error correction
+
+<img src="https://user-images.githubusercontent.com/28811849/204012282-81ab2be9-22f1-45a6-ad04-f78b4b7751fa.png" width=70% height=70%>
+Source: Löffler et al. (2022), doi: https://doi.org/10.1371/journal.pone.0249257.g001 
+License: CC BY 4.0
+
+
+---
+
 This repository contains the code to the publication:  
 
  "A graph-based cell tracking algorithm with few manually tunable parameters and automated segmentation error correction"
@@ -31,7 +40,7 @@ LOCAL_DIR
 ### 2) Install gurobi
 see help_gurobi.txt
 
-## run tracking
+## Run tracking
 - the tracking algorithm can be used with any 2D/3D image data with a segmentation which needs to be provided by the user
 - it is assumed that the image data and segmentation data have a similar naming convention as used by the cell tracking challenge (http://celltrackingchallenge.net)
 ```
