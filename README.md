@@ -57,3 +57,19 @@ LOCAL_DIR
 python -m create_synth_segm_data
 ```
 
+### Citation
+If you use our work in your research, please cite:
+
+```bibtex
+@article{loeffler2021,
+    doi = {10.1371/journal.pone.0249257},
+    author = {Löffler, Katharina and Scherr, Tim and Mikut, Ralf},
+    journal = {PLOS ONE},
+    title = {A graph-based cell tracking algorithm with few manually tunable parameters and automated segmentation error correction},
+    year = {2021},
+    volume = {16},
+    pages = {1-28},
+    number = {9},
+}
+```
+
