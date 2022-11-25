@@ -8,8 +8,9 @@ PLOS ONE 16(9): e0249257. https://doi.org/10.1371/journal.pone.0249257
 **The deep learning based segmentation approach which is used together with the graph-based tracking for submission to the Cell Tracking Challenge as team KIT-Sch-GE(2) now [KIT-GE(3)](http://celltrackingchallenge.net/participants/KIT-GE/) is mainted at https://github.com/TimScherr/KIT-GE-3-Cell-Segmentation-for-CTC .**
 
 The code has been tested on Windows and Linux using Python 3.8.
+
 ## Setup
-### 1) create folder structure
+### 1) Create folder structure
 - create a project directory LOCAL_DIR
 - create two folders named data and results in LOCAL_DIR
 - clone the code and install dependencies:
@@ -39,7 +40,7 @@ python -m run_tracking --image_path IMAGE_PATH --segmentation_path SEGMENTATION_
 ```
 
 ## Reproduce synthetic data sets
-### 1) download data sets
+### 1) Download data sets
 - go to http://celltrackingchallenge.net
 and download the training data sets Fluo-N2DH-SIM+ and Fluo-N3DH-SIM+, unpack and save in data directory:
 ```
@@ -48,10 +49,10 @@ LOCAL_DIR
 │   └───Fluo-N2DH-SIM+
 │   └───Fluo-N3DH-SIM+
 └───2021-cell-tracking
-└───results (synthetically degraded segmentation masks stored will be stored here)
+└───results (synthetically degraded segmentation masks will be stored here)
 ```
 
-### 2) run code
+### 2) Run code
 - run create_synth_segm_data.py to create synthetically degraded segmentation mask images
 ```
 python -m create_synth_segm_data
