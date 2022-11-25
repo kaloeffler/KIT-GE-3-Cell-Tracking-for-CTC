@@ -14,7 +14,7 @@ Löffler K, Scherr T, Mikut R
 (2021)
 PLOS ONE 16(9): e0249257. https://doi.org/10.1371/journal.pone.0249257
 
-**The deep learning based segmentation approach which is used together with the graph-based tracking for submission to the Cell Tracking Challenge as team KIT-Sch-GE(2) now [KIT-GE(3)](http://celltrackingchallenge.net/participants/KIT-GE/) is mainted at https://github.com/TimScherr/KIT-GE-3-Cell-Segmentation-for-CTC .**
+**The deep learning based segmentation approach which is used together with the graph-based tracking for submission to the Cell Tracking Challenge as team KIT-Sch-GE(2) (renamed to [KIT-GE(3)](http://celltrackingchallenge.net/participants/KIT-GE/)) is mainted at https://github.com/TimScherr/KIT-GE-3-Cell-Segmentation-for-CTC .**
 
 The code has been tested on Windows and Linux using Python 3.8.
 
