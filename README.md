@@ -27,7 +27,7 @@ The code has been tested on Windows and Linux using Python 3.8.
 conda create --name venv_graph_tracking_kit_sch_ge_2021 python==3.8
 conda activate venv_graph_tracking_kit_sch_ge_2021
 git clone https://github.com/kaloeffler/KIT-GE-3-Cell-Tracking-for-CTC.git
-pip install -e ./2021-cell-tracking
+pip install -e ./KIT-GE-3-Cell-Tracking-for-CTC
 ```
 so the final structure is  
 ```
